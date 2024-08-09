@@ -2,18 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Account;
+use App\Models\Position;
  
 use Illuminate\Database\Seeder;
  
-class AccountSeeder extends Seeder
+class PositionSeeder extends Seeder
 {
     /**
      * Run the database seeders.
      */
     public function run(): void
     {
-        Account::factory()->count(3)->create();
+        Position::factory()->count(3)->create();
     }
 }
-
