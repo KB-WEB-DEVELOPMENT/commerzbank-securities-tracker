@@ -20,7 +20,7 @@
 						
 						<br/>
 						
-						<h5>Transactions Summary | Sorted by Accrued interest descending</h5>
+						<h5>Transactions Summary | Sorted by transaction type descending</h5>
 
 							<SortedTransactions />		
 							
@@ -36,7 +36,7 @@
 <script>
 
 	import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
-	import SortedTransactions from '@/Components/Transaction/TransactionsSortedByAccruedInterestAmount.vue'
+	import SortedTransactions from '@/Components/Transaction/TransactionsSortedByTypeCount.vue'
 	import { Head } from '@inertiajs/inertia-vue3';
 
 	export default {
