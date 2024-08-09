@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
-			$table->string('pseudonymizedAccountId')->unique();
-			$table->string('securitiesAccountId')->unique();
-			$table->foreignId('user_id')->constrained();
+	    $table->string('pseudonymizedAccountId')->unique();
+	    $table->string('securitiesAccountId')->unique();
+	    $table->foreignId('user_id')->constrained();
         });
     }
 
