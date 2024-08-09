@@ -9,14 +9,14 @@ class TransactionsService
     public function __construct(
     ){}
 
-	public function transactions(): TransactionsData
+    public function transactions(): TransactionsData
     {		
-		$transactionsArray  = [];
+       $transactionsArray  = [];
 		
-		$transactionsArray = include('../../storage/imports/transactions.php');
+       $transactionsArray = include('../../storage/imports/transactions.php');
 		
-		$transactionsData = TransactionsData::fromArray($transactionsArray);
+       $transactionsData = TransactionsData::fromArray($transactionsArray);
 
-		return $transactionsData; 
-	}
+       return $transactionsData; 
+     }
 }	
