@@ -15,24 +15,22 @@ use Illuminate\Database\Eloquent\Collection;
 class GetPortfolioViewModel extends ViewModel
 {
     public function __construct(
-		private User $user,
-		private string $securitiesAccountId,
-		private ?Portfolio $portfolio = null,
-		private ?Collection $positionsCollection = null,
-		private ?Position $position = null		
-	){}
-	
-	
-	public function positionsCollection(): ?Collection
-	{
-		return $this->positionsCollection;	
-	}
+       private User $user,
+       private string $securitiesAccountId,
+       private ?Portfolio $portfolio = null,
+       private ?Collection $positionsCollection = null,
+       private ?Position $position = null		
+    ){}
 		
-	public function averagePayoutPerPosition(): float
-	{
-		$portfolioCollection = new PortfolioCollection();
+    public function positionsCollection(): ?Collection
+    {
+        return $this->positionsCollection;	
+    }
 		
-		return $portfolioCollection->averagePayoutPerPosition($this->securitiesAccountId);		
-	}
+    public function averagePayoutPerPosition(): float
+    {
+       $portfolioCollection = new PortfolioCollection();
+		
+        return $portfolioCollection->averagePayoutPerPosition($this->securitiesAccountId);		
+    }
 }
-
