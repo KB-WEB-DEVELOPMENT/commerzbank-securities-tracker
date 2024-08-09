@@ -15,9 +15,9 @@ class AccountController extends Controller
     {
         $user = Auth::user();
 		
-		$accountsCollection =  $user->accounts()->get();
+	$accountsCollection =  $user->accounts()->get();
 					
-		return Inertia::render('Accounts/Index', [
+	return Inertia::render('Accounts/Index', [
             'viewModel' => new GetAccountsViewModel($user,$accountsCollection)
         ]);
     }
