@@ -22,47 +22,47 @@ class PortfolioController extends Controller
 {
     public function index(Request $request): Response
     {		
-		$user = Auth::user();
+       $user = Auth::user();
 		 
-		$accountId1 = $request->accountId;
+       $accountId1 = $request->accountId;
 		
-		$accountId2 = AccountId::from($accountId1);
+       $accountId2 = AccountId::from($accountId1);
 		
-		$securitiesAccountId = $accountId2->securitiesAccountId();
+       $securitiesAccountId = $accountId2->securitiesAccountId();
 		
-		// I could use Data Transfer objects here
-		$portfolio =  Portfolio::where('securitiesAccountId',$securitiesAccountId)->first();
+       // I could use Data Transfer objects here
+       $portfolio =  Portfolio::where('securitiesAccountId',$securitiesAccountId)->first();
 		
-		// I could use Data Transfer objects here and paginate
-		$positionsCollection =  (!is_null($portfolio)) ? $portfolio->positions()->get() : null;
+       // I could use Data Transfer objects here and paginate
+       $positionsCollection =  (!is_null($portfolio)) ? $portfolio->positions()->get() : null;
 				
-		return Inertia::render('Portfolio/Index', [
-            'viewModel' => new GetPortfolioViewModel($user,$securitiesAccountId,$portfolio,$positionsCollection)
-        ]);
+       return Inertia::render('Portfolio/Index', [
+          'viewModel' => new GetPortfolioViewModel($user,$securitiesAccountId,$portfolio,$positionsCollection)
+       ]);
     }
 	
-	public function position(Request $request) :Response
+    public function position(Request $request) :Response
     {
-		$user = Auth::user();
+       $user = Auth::user();
 		 
-		$accountId1 = $request->accountId;
+       $accountId1 = $request->accountId;
 		
-		$accountId2 = AccountId::from($accountId1);
+       $accountId2 = AccountId::from($accountId1);
 		
-		$securitiesAccountId = $accountId2->securitiesAccountId();
+       $securitiesAccountId = $accountId2->securitiesAccountId();
 		
-		// I could use Data Transfer objects here
-		$portfolio =  Portfolio::where('securitiesAccountId',$securitiesAccountId)->first();
+       // I could use Data Transfer objects here
+       $portfolio =  Portfolio::where('securitiesAccountId',$securitiesAccountId)->first();
 		
-		$positionId = (int)$request->positionId;
+       $positionId = (int)$request->positionId;
 		
-		// I could use Data Transfer objects here	
-		$position = Position::where([
-						['id',$positionId],
-						['portfolio_id',(int)$portfolio->id],
-					])->first();
+       // I could use Data Transfer objects here	
+       $position = Position::where([
+			['id',$positionId],
+			['portfolio_id',(int)$portfolio->id],
+		   ])->first();
 		
-		return Inertia::render('Portfolio/Position', [
+	return Inertia::render('Portfolio/Position', [
             'viewModel' => new GetPortfolioViewModel($user,$securitiesAccountId,$portfolio,$position)
         ]);
     }
