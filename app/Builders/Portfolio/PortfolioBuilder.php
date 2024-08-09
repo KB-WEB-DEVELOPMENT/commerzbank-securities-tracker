@@ -19,12 +19,9 @@ class PortfolioBuilder extends Builder
 		$securitiesAccountId = $accountId->securitiesAccountId();
 		
 		return DB::table('portfolios')
-					->where('account_id',$securitiesAccountId)
-					->latest()
-					->get()
-					->map(fn (object $data) => PortfolioData::fromArray((array) $data));					
+				->where('account_id',$securitiesAccountId)
+				->latest()
+				->get()
+				->map(fn (object $data) => PortfolioData::fromArray((array) $data));					
 	}
-	
-	
-
 }
