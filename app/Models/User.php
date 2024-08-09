@@ -15,24 +15,24 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-	protected $table = 'users';
+    protected $table = 'users';
 	 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+       'name',
+       'email',
+       'password',
     ];
 
     protected $hidden = [
-        'password',
-        'remember_token',
+      'password',
+      'remember_token',
     ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime',
+       'email_verified_at' => 'datetime',
     ];
 
-	public function accounts(): HasMany
+    public function accounts(): HasMany
     {
        return $this->hasMany(Account::class);
     }
