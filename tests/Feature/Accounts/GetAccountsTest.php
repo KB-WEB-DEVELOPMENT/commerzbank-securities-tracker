@@ -16,15 +16,15 @@ class GetAccountsTest
     {
         $user = User::factory()->create();
         
-		$this->actingAs($user);
+	$this->actingAs($user);
 		
-		$account = Account::factory()->create([
+	$account = Account::factory()->create([
             'user_id' => $user->id,
         ]);
 		
-		$securitiesAccountId = $account->securitiesAccountId;
+	$securitiesAccountId = $account->securitiesAccountId;
 		
-		$response = $this->get('/accounts');
+	$response = $this->get('/accounts');
      
         $response->assertSee('Access your portfolio for each of your security acccounts')->assertSee($securityAccountId);
     }
