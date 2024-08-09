@@ -10,16 +10,14 @@ class PortfolioService
     public function __construct(
     ){}
 
-	public function portfolio(): PortfolioData
+    public function portfolio(): PortfolioData
     {		
-		$portfolioArray = [];
+      $portfolioArray = [];
 		
-		$portfolioArray = include('../../storage/imports/portfolio.php');
+      $portfolioArray = include('../../storage/imports/portfolio.php');
 		
-		$portfolioData = PortfolioData::fromArray($portfolioArray);
+      $portfolioData = PortfolioData::fromArray($portfolioArray);
 
-		return $portfolioData; 
-	}
-	
-
+      return $portfolioData; 
+    }
 }	
