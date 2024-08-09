@@ -13,16 +13,16 @@ class GetDashboardTest
     /** @test */
     public function it_should_load_the_dashboard():void
     {
-		$user = User::factory()->create();
+       $user = User::factory()->create();
 		
-		$this->actingAs($user);	
+       $this->actingAs($user);	
 								
-		$name = $user->name; 
+       $name = $user->name; 
 
-		$welcome_url = 'Welcome, ' . $name;
+       $welcome_url = 'Welcome, ' . $name;
 				
-		$response = $this->get('/dashboard');
+       $response = $this->get('/dashboard');
      
-        $response->assertSee($welcome_url)->assertSee('Access your security accounts ids');    
+       $response->assertSee($welcome_url)->assertSee('Access your security accounts ids');    
     }
 }
