@@ -26,122 +26,121 @@ class TransactionController extends Controller
     {
         $user = Auth::user();
 		 
-		$accountId1 = $request->accountId;
+	$accountId1 = $request->accountId;
 		
-		$accountId2 = AccountId::from($accountId1);
+	$accountId2 = AccountId::from($accountId1);
 		
-		$securitiesAccountId = $accountId2->securitiesAccountId();
+	$securitiesAccountId = $accountId2->securitiesAccountId();
 		
-		// I could use Data Transfer objects here and paginate
-		$unsortedTransactionsCollection = Account::where('securitiesAccountId',$securitiesAccountId)->transactions()->get();
+	// I could use Data Transfer objects here and paginate
+	$unsortedTransactionsCollection = Account::where('securitiesAccountId',$securitiesAccountId)->transactions()->get();
 		
-		$sortedTransacCollection =  $unsortedTransactionsCollection->sortByDesc(function ($item) {
-														return strtotime($item->tradingDate);
-													})->values()->all();
+	$sortedTransacCollection =  $unsortedTransactionsCollection->sortByDesc(function ($item) {
+						return strtotime($item->tradingDate);
+				    })->values()->all();
 
-		return Inertia::render('Transactions/Index', [
+	return Inertia::render('Transactions/Index', [
             'viewModel' => new GetTransactionsViewModel($user,$securitiesAccountId,$sortedTransacCollection)
         ]);
     }
 	
-	public function sortAccruedInterest(Request $request):Response
+    public function sortAccruedInterest(Request $request):Response
     {
-		$user = Auth::user();
+       $user = Auth::user();
 		 
-		$accountId1 = $request->accountId;
+       $accountId1 = $request->accountId;
 		
-		$accountId2 = AccountId::from($accountId1);
+       $accountId2 = AccountId::from($accountId1);
 		
-		$securitiesAccountId = $accountId2->securitiesAccountId();
+       $securitiesAccountId = $accountId2->securitiesAccountId();
 		
-		return Inertia::render('Transactions/AccruedInterest', [
+       return Inertia::render('Transactions/AccruedInterest', [
             'viewModel' => new GetTransactionsViewModel($user,$securitiesAccountId)
-        ]);
-	}
+       ]);
+     }
 
-	public function sortTypeCount(Request $request):Response
+    public function sortTypeCount(Request $request):Response
     {
-		$user = Auth::user();
+       $user = Auth::user();
 		 
-		$accountId1 = $request->accountId;
+       $accountId1 = $request->accountId;
 		
-		$accountId2 = AccountId::from($accountId1);
+       $accountId2 = AccountId::from($accountId1);
 		
-		$securitiesAccountId = $accountId2->securitiesAccountId();
+       $securitiesAccountId = $accountId2->securitiesAccountId();
 		
-		return Inertia::render('Transactions/Type', [
+       return Inertia::render('Transactions/Type', [
             'viewModel' => new GetTransactionsViewModel($user,$securitiesAccountId)
-        ]);
-	}	
+       ]);
+      }	
 
-	public function sortWeek(Request $request):Response
+    public function sortWeek(Request $request):Response
     {
-		$user = Auth::user();
+       $user = Auth::user();
 		 
-		$accountId1 = $request->accountId;
+       $accountId1 = $request->accountId;
 		
-		$accountId2 = AccountId::from($accountId1);
+       $accountId2 = AccountId::from($accountId1);
 		
-		$securitiesAccountId = $accountId2->securitiesAccountId();
+       $securitiesAccountId = $accountId2->securitiesAccountId();
 		
-		return Inertia::render('Transactions/Week', [
-            'viewModel' => new GetTransactionsViewModel($user,$securitiesAccountId)
+        return Inertia::render('Transactions/Week', [
+           'viewModel' => new GetTransactionsViewModel($user,$securitiesAccountId)
         ]);
-	}	
+     }	
 
-	public function sortMonth(Request $request):Response
-    {
-		$user = Auth::user();
-		 
-		$accountId1 = $request->accountId;
-		
-		$accountId2 = AccountId::from($accountId1);
-		
-		$securitiesAccountId = $accountId2->securitiesAccountId();
-		
-		return Inertia::render('Transactions/Month', [
-            'viewModel' => new GetTransactionsViewModel($user,$securitiesAccountId)
-        ]);
-	}	
-
-	public function sortYear(Request $request):Response
-    {
-		$user = Auth::user();
-		 
-		$accountId1 = $request->accountId;
-		
-		$accountId2 = AccountId::from($accountId1);
-		
-		$securitiesAccountId = $accountId2->securitiesAccountId();
-		
-		return Inertia::render('Transactions/Year', [
-            'viewModel' => new GetTransactionsViewModel($user,$securitiesAccountId)
-        ]);
-		
-	}	
-	
-	public function transaction(Request $request):Response
+    public function sortMonth(Request $request):Response
     {
         $user = Auth::user();
 		 
-		$accountId1 = $request->accountId;
+	$accountId1 = $request->accountId;
 		
-		$accountId2 = AccountId::from($accountId1);
+	$accountId2 = AccountId::from($accountId1);
 		
-		$securitiesAccountId = $accountId2->securitiesAccountId();
+	$securitiesAccountId = $accountId2->securitiesAccountId();
 		
-		$account = Account::where('securitiesAccountId',$securitiesAccountId)->first();
+	return Inertia::render('Transactions/Month', [
+            'viewModel' => new GetTransactionsViewModel($user,$securitiesAccountId)
+        ]);
+     }	
+
+    public function sortYear(Request $request):Response
+    {
+       $user = Auth::user();
+		 
+       $accountId1 = $request->accountId;
 		
-		$transactionId = (int)$request->transactionId;
+       $accountId2 = AccountId::from($accountId1);
 		
-		// I could use Data Transfer objects here	
-		$transaction = Transaction::where([
-						['id',$transactionId],
-						['account_id',$securitiesAccountId],
-					])->first();
+       $securitiesAccountId = $accountId2->securitiesAccountId();
 		
-		return Inertia::render('Transactions/Transaction', [
+       return Inertia::render('Transactions/Year', [
+          'viewModel' => new GetTransactionsViewModel($user,$securitiesAccountId)
+       ]);	
+    }	
+	
+     public function transaction(Request $request):Response
+     {
+        $user = Auth::user();
+		 
+	$accountId1 = $request->accountId;
+		
+	$accountId2 = AccountId::from($accountId1);
+		
+	$securitiesAccountId = $accountId2->securitiesAccountId();
+		
+	$account = Account::where('securitiesAccountId',$securitiesAccountId)->first();
+		
+	$transactionId = (int)$request->transactionId;
+		
+	// I could use Data Transfer objects here	
+	$transaction = Transaction::where([
+			  ['id',$transactionId],
+			  ['account_id',$securitiesAccountId],
+			])->first();
+		
+	return Inertia::render('Transactions/Transaction', [
             'viewModel' => new GetTransactionsViewModel($user,$securitiesAccountId,$transaction)
         ]);
-    }
+      }
 }
