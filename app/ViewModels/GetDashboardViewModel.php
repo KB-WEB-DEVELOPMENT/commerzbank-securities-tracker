@@ -7,6 +7,6 @@ use App\Models\User;
 class GetDashboardViewModel extends ViewModel
 {
     public function __construct(
-		private User $user
-	){}
+      private User $user
+    ){}
 }
