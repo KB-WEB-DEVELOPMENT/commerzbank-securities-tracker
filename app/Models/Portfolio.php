@@ -15,40 +15,38 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Portfolio extends Model
 {
-	use HasFactory;
+  use HasFactory;
 
-	protected $table = 'portfolios';
+  protected $table = 'portfolios';
 	 
-	protected $guarded = [];
+  protected $guarded = [];
 	
-	protected $fillable = [
+  protected $fillable = [	
+	      'creationDay',
+              'effectiveDate',
+	      'securitiesAccountId',	
+	      'totalValue_amount',
+	      'totalValue_currency',
+  ];
 	
-	    'creationDay',
-        'effectiveDate',
-		'securitiesAccountId',	
-		'totalValue_amount',
-		'totalValue_currency',
-	];
-	
+  public function positions(): HasMany
+  {
+    return $this->hasMany(Position::class);
+  }
 
-	public function positions(): HasMany
-    {
-        return $this->hasMany(Position::class);
-    }
+  public function account(): BelongsTo
+  { 
+    return $this->belongsTo(Account::class);
+  }
 
-    public function account(): BelongsTo
-    {
-        return $this->belongsTo(Account::class);
-    }
+  public function newEloquentBuilder($query): PortfolioBuilder
+  {
+    return new PortfolioBuilder($query);
+  }
 
-	public function newEloquentBuilder($query): PortfolioBuilder
-	{
-		return new PortfolioBuilder($query);
-	}
-
-    public function newCollection(array $models = []): PortfolioCollection
-    {
-        return new PortfolioCollection($models);
-    }
+  public function newCollection(array $models = []): PortfolioCollection
+  {
+    return new PortfolioCollection($models);
+  }
 	
 }
