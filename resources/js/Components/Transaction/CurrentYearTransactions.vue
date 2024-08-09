@@ -30,7 +30,7 @@
 				</tr>
 			</thead>
 			<tbody class="bg-white divide-y divide-gray-200 overflow-y-scroll">
-				<tr v-for="item in sortTransactionsByTypeCountDesc" :key="item.id" class="hover:bg-gray-100">
+				<tr v-for="item in thisYear" :key="item.id" class="hover:bg-gray-100">
 					<td class="px-6 py-4">
 						<div class="text-sm text-gray-900">{{ item.bookingDate }}</div>
 					</td>
@@ -67,7 +67,7 @@
 <script>
 	export default {
 		props: {
-			sortTransactionsByTypeCountDesc: {
+			thisYear: {
 				type: Object,
 				required: true,
 			},

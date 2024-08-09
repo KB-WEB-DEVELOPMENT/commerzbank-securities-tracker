@@ -30,7 +30,7 @@
 				</tr>
 			</thead>
 			<tbody class="bg-white divide-y divide-gray-200 overflow-y-scroll">
-				<tr v-for="item in sortTransactionsByTypeCountDesc" :key="item.id" class="hover:bg-gray-100">
+				<tr v-for="item in thisWeek" :key="item.id" class="hover:bg-gray-100">
 					<td class="px-6 py-4">
 						<div class="text-sm text-gray-900">{{ item.bookingDate }}</div>
 					</td>
@@ -54,7 +54,7 @@
 						<div class="text-sm text-gray-900">{{ item.size_unit }}</div>
 					</td>
 					<td class="px-6 py-4">
-						<a href="'/accounts/' + item.account_id + '/transactions/' + item.id">
+						<a href="'/accounts/' + item.account_id + '/transactions/' +  item.id">
 							<button>Transaction Details</button>
 						</a>
 					</td>										
@@ -67,7 +67,7 @@
 <script>
 	export default {
 		props: {
-			sortTransactionsByTypeCountDesc: {
+			thisWeek: {
 				type: Object,
 				required: true,
 			},
