@@ -19,9 +19,9 @@ class PositionBuilder extends Builder
 		$portfolioId =  (int)DB::table('portfolios')->where('account_id',$securityAccountId)->first()->id; 
 		
 		return DB::table('positions')
-					->where('portfolio_id',$portfolioId)
-					->latest()
-					->get()
-					->map(fn (object $data) => PositionData::from((array) $data));						
+			    ->where('portfolio_id',$portfolioId)
+			    ->latest()
+			    ->get()
+			    ->map(fn (object $data) => PositionData::from((array) $data));						
 	}
 }
