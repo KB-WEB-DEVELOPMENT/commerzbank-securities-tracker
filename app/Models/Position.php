@@ -19,41 +19,41 @@ class Position extends Model
 	protected $guarded = [];
 	
 	protected $fillable = [
-		'accruedInterest_amount',
-		'accruedInterest_currency',
-		'currentPrice_amount',
-		'currentPrice_unit',
-		'exchangeRate',
-		'exchangeRateDate',
-		'quoteDate',
-		'initialPrice_amount',
-		'initialPrice_unit',
-		'initialExchangeRate',
-		'lastTradeDate',
-		'payedAccruedInterest_amount',
-		'payedAccruedInterest_currency',		
-		'payout_amount',
-		'payout_currency',
-		'payoutId',
-		'quantity_amount',
-		'quantity_unit',
-		'masterdata_position_isin',
-		'masterdata_position_wkn',
-		'masterdata_position_name',
-		'masterdata_position_notationType',
-		'masterdata_currency',
-		'masterdata_maturityDate',
-		'masterdata_vote',
-		'portfolio_id'
-	];	
+	   'accruedInterest_amount',
+	   'accruedInterest_currency',
+	   'currentPrice_amount',
+	   'currentPrice_unit',
+	   'exchangeRate',
+	   'exchangeRateDate',
+	   'quoteDate',
+	   'initialPrice_amount',
+	   'initialPrice_unit',
+	   'initialExchangeRate',
+	   'lastTradeDate',
+	   'payedAccruedInterest_amount',
+	   'payedAccruedInterest_currency',		
+	   'payout_amount',
+	   'payout_currency',
+	   'payoutId',
+	   'quantity_amount',
+	   'quantity_unit',
+	   'masterdata_position_isin',
+	   'masterdata_position_wkn',
+	   'masterdata_position_name',
+	   'masterdata_position_notationType',
+	   'masterdata_currency',
+	   'masterdata_maturityDate',
+	   'masterdata_vote',
+	   'portfolio_id'
+        ];	
 	
-	public function portfolio(): BelongsTo
-    {
-        return $this->belongsTo(Portfolio::class);
-    }
+       public function portfolio(): BelongsTo
+       {
+      	 return $this->belongsTo(Portfolio::class);
+       }
 	
-	public function newEloquentBuilder($query): PositionBuilder
-	{
-		return new PositionBuilder($query);
-	}
+       public function newEloquentBuilder($query): PositionBuilder
+       {
+	  return new PositionBuilder($query);
+       }
 }	
