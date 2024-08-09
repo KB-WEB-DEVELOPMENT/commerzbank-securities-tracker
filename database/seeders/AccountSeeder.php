@@ -16,4 +16,3 @@ class AccountSeeder extends Seeder
         Account::factory()->count(3)->create();
     }
 }
-
