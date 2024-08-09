@@ -1,0 +1,6 @@
+Note: 
+
+Whether a collection is added in the folder App/Services/Commerzbank/Collections
+or in the folder App/Collections varies depending on a case by case scenario.
+
+For this project, all collections lie in the folder App/Collections.
