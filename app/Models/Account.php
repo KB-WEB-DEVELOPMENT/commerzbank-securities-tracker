@@ -14,35 +14,34 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Account extends Model
 {
-
-	use HasFactory;
+   use HasFactory;
 	
-	protected $table = 'accounts';
+   protected $table = 'accounts';
  
-	protected $guarded = [];
+   protected $guarded = [];
 	
-	protected $fillable = [
-		'pseudonymizedAccountId',
-		'securitiesAccountId',
-	];
+   protected $fillable = [
+	'pseudonymizedAccountId',
+	'securitiesAccountId',
+   ];
 		
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+   public function user(): BelongsTo
+   {
+     return $this->belongsTo(User::class);
+   }
 	
-	public function portfolio(): HasOne
-    {
-        return $this->hasOne(Portfolio::class);
-    }
+   public function portfolio(): HasOne
+   {
+     return $this->hasOne(Portfolio::class);
+   }
 	
-	public function transactions(): HasMany
-    {
-       return $this->hasMany(Transaction::class);
-    }
+   public function transactions(): HasMany
+   {
+     return $this->hasMany(Transaction::class);
+   }
 	
-	public function newEloquentBuilder($query): AccountBuilder
-	{
-		return new AccountBuilder($query);
-	}	
+   public function newEloquentBuilder($query): AccountBuilder
+   {
+     return new AccountBuilder($query);
+   }	
 }
