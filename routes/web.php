@@ -15,36 +15,34 @@ use Illuminate\Foundation\Application;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-
-					return Inertia::render('Welcome', [
-							'canLogin' => Route::has('login'),
-							'canRegister' => Route::has('register'),
-							'laravelVersion' => Application::VERSION,
-							'phpVersion' => PHP_VERSION,
-					]);
-				
+		return Inertia::render('Welcome', [
+			'canLogin' => Route::has('login'),
+			'canRegister' => Route::has('register'),
+			'laravelVersion' => Application::VERSION,
+			'phpVersion' => PHP_VERSION,
+		]);				
 })->name('homepage.indexPage');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])->name('dashboard');
+       ->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/accounts', [AccountController::class, 'index'])
-    ->middleware(['auth', 'verified'])->name('account.show-accounts');
+       ->middleware(['auth', 'verified'])->name('account.show-accounts');
 	
 Route::get('/accounts/{accountId}/portfolio', [PortfolioController::class, 'index'])
-    ->middleware(['auth', 'verified'])->name('portfolio.show-portfolio');
+       ->middleware(['auth', 'verified'])->name('portfolio.show-portfolio');
 	
 Route::get('/accounts/{accountId}/portfolio/positions/{positionId}', [PortfolioController::class, 'position'])
-    ->middleware(['auth', 'verified'])->name('portfolio.position-details');
+       ->middleware(['auth', 'verified'])->name('portfolio.position-details');
 	
 Route::get('/accounts/{accountId}/transactions', [TransactionController::class, 'transactions'])
-    ->middleware(['auth', 'verified'])->name('transaction.show-transactions');
+       ->middleware(['auth', 'verified'])->name('transaction.show-transactions');
 	
 Route::get('/accounts/{accountId}/transactions/accrued-interest-desc', [TransactionController::class, 'sortAccruedInterest'])
-    ->middleware(['auth', 'verified'])->name('transaction.show-sort-accruedInterest');
+       ->middleware(['auth', 'verified'])->name('transaction.show-sort-accruedInterest');
 	
 Route::get('/accounts/{accountId}/transactions/type-count-desc', [TransactionController::class, 'sortTypeCount'])
-    ->middleware(['auth', 'verified'])->name('transaction.show-sort-typeCount');
+       ->middleware(['auth', 'verified'])->name('transaction.show-sort-typeCount');
 	
 Route::get('/accounts/{accountId}/transactions/week', [TransactionController::class, 'sortWeek'])
     ->middleware(['auth', 'verified'])->name('transaction.show-sort-week');
