@@ -18,62 +18,59 @@ class GetPortfolioTest
     {
         $user = User::factory()->create();
 				
-		$account = Account::factory()->create([
+	$account = Account::factory()->create([
             'user_id' => $user->id,
         ]);
 		
-		$portfolio =  Portfolio::factory()->create([
+	$portfolio =  Portfolio::factory()->create([
             'securitiesAccountId' => $account->securitiesAccountId,
         ]);
 		
-		$position1 = Position::factory()->create([
+	$position1 = Position::factory()->create([
             'portfolio_id' => $portfolio->id,
         ]);
 		
-		$position2 = Position::factory()->create([
+	$position2 = Position::factory()->create([
             'portfolio_id' => $portfolio->id,
         ]);
 		
-		$position3 = Position::factory()->create([
+	$position3 = Position::factory()->create([
             'portfolio_id' => $portfolio->id,
         ]);
 				
-		$portfolio_amount = $portfolio->totalValue_amount; 
+	$portfolio_amount = $portfolio->totalValue_amount; 
 		
-		$portfolio_url = '/accounts/' . $account->securitiesAccountId . '/portfolio';
+	$portfolio_url = '/accounts/' . $account->securitiesAccountId . '/portfolio';
 
-		$this->actingAs($user);
+	$this->actingAs($user);
 		
-		$response = $this->get($portfolio_url);
+	$response = $this->get($portfolio_url);
 		
-		$response->assertSee('Portfolio Details')->assertSee($portfolio_amount);
-		
+	$response->assertSee('Portfolio Details')->assertSee($portfolio_amount);	
     }
 
-	public function it_should_display_the_portfolio_position():void
+    public function it_should_display_the_portfolio_position():void
     {
-		$user = User::factory()->create();
+       $user = User::factory()->create();
 				
-		$account = Account::factory()->create([
+       $account = Account::factory()->create([
             'user_id' => $user->id,
         ]);
 		
-		$portfolio =  Portfolio::factory()->create([
+	$portfolio =  Portfolio::factory()->create([
             'securitiesAccountId' => $account->securitiesAccountId,
         ]);
 		
-		$position = Position::factory()->create([
+	$position = Position::factory()->create([
             'portfolio_id' => $portfolio->id,
         ]);
 		
-		$isin_position_string = 'Position ISIN: ' . $position->masterdata_position_isin;
+	$isin_position_string = 'Position ISIN: ' . $position->masterdata_position_isin;
 				
-		$position_url = '/accounts/' . $account->securitiesAccountId . '/portfolio/positions/' . $position->id;
+	$position_url = '/accounts/' . $account->securitiesAccountId . '/portfolio/positions/' . $position->id;
 				
-		$response = $this->get($position_url);		
+	$response = $this->get($position_url);		
 		
-		$response->assertSee('Portfolio Position Details')->assertSee($isin_position_string);
-		
+	$response->assertSee('Portfolio Position Details')->assertSee($isin_position_string);	
     }
-
 }
