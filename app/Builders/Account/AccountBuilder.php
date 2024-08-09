@@ -14,10 +14,9 @@ class AccountBuilder extends Builder
 	public function securityAccoundIds(): Collection
 	{
 		return DB::table('accounts')
-					->select('securitiesAccountId')
-					->where('user_id',Auth::id())
-					->latest()
-					->get();
-											
+			     ->select('securitiesAccountId')
+			     ->where('user_id',Auth::id())
+			     ->latest()
+			     ->get();											
 	}	
 }
