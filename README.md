@@ -12,11 +12,11 @@ Through the API, Commerzbank customers can retrieve information about:
 
 <b>(3) all transactions tied to each such account id</b>
 
-![alt text](https://github.com/KB-WEB-DEVELOPMENT/commerzbank-securities-tracker/public/images/commerzbank-securities-api-overview.png)
+![alt text](https://github.com/KB-WEB-DEVELOPMENT/commerzbank-securities-tracker/blob/main/public/images/commerzbank-securities-api-overview.PNG)
 
 I followed Martin Joo's DDD's Laravel approach quite closely when it comes to structure:
 
-![alt text](https://github.com/KB-WEB-DEVELOPMENT/commerzbank-securities-tracker/public/images/commerzbank-securities-api-structure.PNG)
+![alt text](https://github.com/KB-WEB-DEVELOPMENT/commerzbank-securities-tracker/blob/main/public/images/commerzbank-securities-api-structure.PNG)
 
 Insights from his blog: https://martinjoo.dev/domain-driven-design-with-laravel-domains-and-applications
 
