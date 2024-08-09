@@ -13,9 +13,9 @@ class DashboardController extends Controller
 {
     public function index(Request $request):Response
     {       
-		$user = Auth::user();
+       $user = Auth::user();
 
-		return Inertia::render('Dashboard', [
+	return Inertia::render('Dashboard', [
             'viewModel' => new GetDashboardViewModel($user)
         ]);
     }
