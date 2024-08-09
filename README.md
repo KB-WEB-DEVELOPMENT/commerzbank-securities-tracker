@@ -2,7 +2,7 @@
 Laravel Domain Driven Design (DDD) project which makes use of (German bank) Commerzbank 
 Securities API.
 
-To read about Commerzbank Securities api:  https://developer.commerzbank.com/products/sandbox/securities-api/v4/try-this-api
+To read about Commerzbank Securities API:  https://developer.commerzbank.com/products/sandbox/securities-api/v4/try-this-api
 
 Through the API, Commerzbank customers can retrieve information about: 
 
