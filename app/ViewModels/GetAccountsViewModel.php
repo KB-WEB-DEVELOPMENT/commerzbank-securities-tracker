@@ -9,16 +9,16 @@ use Illuminate\Database\Eloquent\Collection;
 class GetAccountsViewModel extends ViewModel
 {
     public function __construct(
-		private User $user,
-		private ?Collection $accountsCollection
-	){}
+       private User $user,
+       private ?Collection $accountsCollection
+    ){}
 
-	public function user(): User
+    public function user(): User
     {
         return $this->user;
     }	
 
-	public function accountsCollection(): ?Collection
+    public function accountsCollection(): ?Collection
     {
         return $this->accountsCollection;
     }
