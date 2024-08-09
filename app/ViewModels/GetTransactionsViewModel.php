@@ -15,49 +15,49 @@ use Illuminate\Database\Eloquent\Collection;
 class GetTransactionsViewModel extends ViewModel
 {
     public function __construct(
-		private User $user,
-		private string $securitiesAccountId,
-		private ?Collection $transactionsCollection = null,
-		private ?Transaction $transaction = null,		
-	){}
+        private User $user,
+        private string $securitiesAccountId,
+        private ?Collection $transactionsCollection = null,
+	private ?Transaction $transaction = null,		
+    ){}
 	
-	public function sortTransactionsByAccruedInterestAmountDesc(): ?Collection
+    public function sortTransactionsByAccruedInterestAmountDesc(): ?Collection
     {				
-		$transactionsCollection = new TransactionsCollection();
+       $transactionsCollection = new TransactionsCollection();
 	  
-		return $transactionsCollection->sortTransactionsByAccruedInterestAmountDesc($this->securitiesAccountId);	  
-	}
+	return $transactionsCollection->sortTransactionsByAccruedInterestAmountDesc($this->securitiesAccountId);	  
+    }
 		
-	public function sortTransactionsByTypeCountDesc(): ?Collection
+    public function sortTransactionsByTypeCountDesc(): ?Collection
     {				
-		$transactionsCollection = new TransactionsCollection();
+       $transactionsCollection = new TransactionsCollection();
 		
-		return $transactionsCollection->sortTransactionsByTypeCountDesc($this->securitiesAccountId);
-	}
+	return $transactionsCollection->sortTransactionsByTypeCountDesc($this->securitiesAccountId);
+    }
 
-	public function thisWeek(): ?Collection
+    public function thisWeek(): ?Collection
     {				
-		$transactionBuilder = new TransactionBuilder();
+       $transactionBuilder = new TransactionBuilder();
 
-		return $transactionBuilder->thisWeek($this->securitiesAccountId);
-	}
+	return $transactionBuilder->thisWeek($this->securitiesAccountId);
+    }
 
-	public function thisMonth(): ?Collection
+    public function thisMonth(): ?Collection
     {				
-		$transactionBuilder = new TransactionBuilder();
+       $transactionBuilder = new TransactionBuilder();
 
-		return $transactionBuilder->thisMonth($this->securitiesAccountId);
-	}
+       return $transactionBuilder->thisMonth($this->securitiesAccountId);
+    }
 
-	public function thisYear(): ?Collection
+    public function thisYear(): ?Collection
     {				
-		$transactionBuilder = new TransactionBuilder();
+      $transactionBuilder = new TransactionBuilder();
 
-		return $transactionBuilder->thisYear($this->securitiesAccountId);
-	}
+      return $transactionBuilder->thisYear($this->securitiesAccountId);
+    }
 	
-	public function transaction(): ?Transaction
+    public function transaction(): ?Transaction
     {				
-		return $this->transaction;
-	}	
+       return $this->transaction;
+    }	
 }
