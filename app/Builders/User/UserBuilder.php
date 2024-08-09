@@ -14,9 +14,9 @@ class UserBuilder extends Builder
 	public function securitiesAccountIds(): array
 	{
 		return DB::table('accounts')
-					->select('securitiesAccountId')
-					->where('user_id',Auth::id())
-					->latest()
-					->get();					
+			     ->select('securitiesAccountId')
+			     ->where('user_id',Auth::id())
+			     ->latest()
+ 		             ->get();					
 	}	
 }
