@@ -19,6 +19,7 @@ return new class extends Migration
 	    $table->string('effectiveDate');
 	    $table->decimal('totalValue_amount',total:12,places:2);
 	    $table->string('totalValue_currency');
+	    $table->unsignedBigInteger('account_id');
 	    $table->foreign('account_id')->references('securitiesAccountId')->on('accounts');
 	});
     }
