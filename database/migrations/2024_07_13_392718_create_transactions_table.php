@@ -62,7 +62,8 @@ return new class extends Migration
 	    $table->string('taxTypeDescription');
 	    $table->decimal('taxes_amount_amount',total:12,places:2);
 	    $table->string('taxes_amount_currency');
-	   $table->foreign('account_id')->references('securitiesAccountId')->on('accounts');		
+	    $table->unsignedBigInteger('account_id');
+	    $table->foreign('account_id')->references('securitiesAccountId')->on('accounts');		
         });
     }
 
