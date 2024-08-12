@@ -14,7 +14,7 @@ class ToTradingDate
 	   throw new Exception('The value of the variable you provided cannot be converted into a proper date.');	
 	}
 		
-	return new static(date_create($this->unformattedDate));
+	return new static(date_create($unformattedDate));
     }
 
     public function format(): string
