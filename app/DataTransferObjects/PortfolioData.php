@@ -2,6 +2,8 @@
  
 namespace App\DataTransferObjects;
 
+use Illuminate\Database\Eloquent\Collection;
+
 use Spatie\LaravelData\Data;
 
 class PortfolioData extends Data 
