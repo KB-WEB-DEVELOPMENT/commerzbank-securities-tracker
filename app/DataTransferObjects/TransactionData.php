@@ -2,6 +2,8 @@
  
 namespace App\Services\Commerzbank\DataTransferObjects;
 
+use Illuminate\Database\Eloquent\Collection;
+
 use Spatie\LaravelData\Data;
 
 class TransactionData extends Data 
