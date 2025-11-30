@@ -11,10 +11,10 @@ class ToTradingDate
     public static function from(string $unformattedDate): self
     {						
         if (date_create($unformattedDate) == false) {
-	   throw new Exception('The value of the variable you provided cannot be converted into a proper date.');	
-	}
+	   		throw new Exception('The value of the variable you provided cannot be converted into a proper date.');	
+		}
 		
-	return new static(date_create($unformattedDate));
+		return new static(date_create($unformattedDate));
     }
 
     public function format(): string
@@ -22,3 +22,4 @@ class ToTradingDate
        return date_format($this->unformattedDate,'Y-m-d'); 
     }
 }
+
