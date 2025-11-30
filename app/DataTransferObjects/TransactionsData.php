@@ -27,55 +27,55 @@ class TransactionsData extends Data
        foreach ($data['transactions'] as $transaction) {
 					
            $taxes = TaxData::collect([
-			['taxType' => $transaction['taxDetails']['taxes']['taxType'] ],
-			['taxTypeDescription_de' => $transaction['taxDetails']['taxes']['taxTypeDescription']['de'] ],
-			['taxTypeDescription_en' => $transaction['taxDetails']['taxes']['taxTypeDescription']['en'] ],
-			['amount_amount' => (float)$transaction['taxDetails']['taxes']['amount']['amount'] ],
-			['amount_currency' => $transaction['taxDetails']['taxes']['amount']['currency'] ],
+			['taxType' => $transaction['taxDetails']['taxes']['taxType']],
+			['taxTypeDescription_de' => $transaction['taxDetails']['taxes']['taxTypeDescription']['de']],
+			['taxTypeDescription_en' => $transaction['taxDetails']['taxes']['taxTypeDescription']['en']],
+			['amount_amount' => (float)$transaction['taxDetails']['taxes']['amount']['amount']],
+			['amount_currency' => $transaction['taxDetails']['taxes']['amount']['currency']],
 		    ]);
 			
-	   $taxesCollection->push($taxes);
+	   		$taxesCollection->push($taxes);
 			
-	   $transaction =  TransactionData::collect([
-				  ['accruedInterest_amount' => (float)$transaction['accruedInterest']['amount'] ],
-				  ['accruedInterest_currency' => $transaction['accruedInterest']['currency'] ],
-				  ['blockInfo_blockText' => $transaction['blockInfo']['blockText'] ],
-				  ['blockInfo_blockTo' => $transaction['blockInfo']['blockTo'] ],
-			          ['bookingDate' => $transaction['bookingDate'] ],
-				  ['cancellationInfo_cancelledTransactionId' => $transaction['cancellationInfo']['cancelledTransactionId'] ],
-				  ['cancellationInfo_isCancellation' => $transaction['cancellationInfo']['isCancelation'] ],
-				  ['costs_costDescription' => $transaction['costs']['costDescription'] ],
-				  ['costs_money_amount' => (float)$transaction['costs']['money']['amount'] ],
-				  ['costs_money_currency' => $transaction['costs']['money']['currency'] ],
-			          ['depository' => $transaction['depository'] ],
-				  ['exchangeRate' => (float)$transaction['exchangeRate'] ],
-			          ['positionId' => $transaction['positionId'] ],
-			          ['price_amount' => (float)$transaction['price']['amount'] ],
-				  ['price_unit' => $transaction['price']['unit'] ],
-				  ['masterdata_isin' => $transaction['masterdata']['isin'] ],
-				  ['masterdata_wkn' => $transaction['masterdata']['wkn'] ],
-				  ['masterdata_name' => $transaction['masterdata']['name'] ],
-				  ['masterdata_notationType' => $transaction['masterdata']['notationType'] ],
-				  ['size_amount' => (float)$transaction['size']['amount'] ],
-			          ['size_unit' => $transaction['size']['unit'] ],
+	   		$transaction =  TransactionData::collect([
+				  ['accruedInterest_amount' => (float)$transaction['accruedInterest']['amount']],
+				  ['accruedInterest_currency' => $transaction['accruedInterest']['currency']],
+				  ['blockInfo_blockText' => $transaction['blockInfo']['blockText']],
+				  ['blockInfo_blockTo' => $transaction['blockInfo']['blockTo']],
+			      ['bookingDate' => $transaction['bookingDate']],
+				  ['cancellationInfo_cancelledTransactionId' => $transaction['cancellationInfo']['cancelledTransactionId']],
+				  ['cancellationInfo_isCancellation' => $transaction['cancellationInfo']['isCancelation']],
+				  ['costs_costDescription' => $transaction['costs']['costDescription']],
+				  ['costs_money_amount' => (float)$transaction['costs']['money']['amount']],
+				  ['costs_money_currency' => $transaction['costs']['money']['currency']],
+			      ['depository' => $transaction['depository']],
+				  ['exchangeRate' => (float)$transaction['exchangeRate']],
+			      ['positionId' => $transaction['positionId']],
+			      ['price_amount' => (float)$transaction['price']['amount']],
+				  ['price_unit' => $transaction['price']['unit']],
+				  ['masterdata_isin' => $transaction['masterdata']['isin']],
+				  ['masterdata_wkn' => $transaction['masterdata']['wkn']],
+				  ['masterdata_name' => $transaction['masterdata']['name']],
+				  ['masterdata_notationType' => $transaction['masterdata']['notationType']],
+				  ['size_amount' => (float)$transaction['size']['amount']],
+			      ['size_unit' => $transaction['size']['unit']],
 				  ['tradingDate' => $transaction['tradingDate'] ],
-			          ['tradingPlatform' => $transaction['tradingPlatform'] ],
-				  ['tradingTime' => $transaction['tradingTime'] ],
-			          ['transactionId' => $transaction['transactionId'] ],
-			          ['transactionType_id' => $transaction['transactionType']['id'] ],
-				  ['transactionType_name' => $transaction['transactionType']['name'] ],
-				  ['valutaDate' => $transaction['valutaDate'] ],
-				  ['settlementAccount' => (float)$transaction['settlemenAccount'] ],
-				  ['marketValue_amount' => $transaction['marketValue']['amount'] ],
-			          ['marketValue_currency' => $transaction['marketValue']['currency'] ],
-			          ['actualAmount_amount' => (float)$transaction['actualAmount']['amount'] ],
-				  ['actualAmount_currency' => $transaction['actualAmount']['currency'] ],
-				  ['externalOrderId' => $transaction['externalOrderId'] ],
-				  ['settlementNumber' => $transaction['settlementNumber'] ],
-			          ['executionNumber' => $transaction['executionNumber'] ],
-				  ['clientOrderNumber' => $transaction['clientOrderNumber'] ],
-			          ['transactionDetailedType' => $transaction['transactionDetailedType'] ],       				
-			          ['taxes' => $taxesCollection ],
+			      ['tradingPlatform' => $transaction['tradingPlatform']],
+				  ['tradingTime' => $transaction['tradingTime']],
+			      ['transactionId' => $transaction['transactionId']],
+			      ['transactionType_id' => $transaction['transactionType']['id']],
+				  ['transactionType_name' => $transaction['transactionType']['name']],
+				  ['valutaDate' => $transaction['valutaDate']],
+				  ['settlementAccount' => (float)$transaction['settlemenAccount']],
+				  ['marketValue_amount' => $transaction['marketValue']['amount']],
+			      ['marketValue_currency' => $transaction['marketValue']['currency']],
+			      ['actualAmount_amount' => (float)$transaction['actualAmount']['amount']],
+				  ['actualAmount_currency' => $transaction['actualAmount']['currency']],
+				  ['externalOrderId' => $transaction['externalOrderId']],
+				  ['settlementNumber' => $transaction['settlementNumber']],
+			      ['executionNumber' => $transaction['executionNumber']],
+				  ['clientOrderNumber' => $transaction['clientOrderNumber']],
+			      ['transactionDetailedType' => $transaction['transactionDetailedType']],       				
+			      ['taxes' => $taxesCollection ],
 			  ]);	
 							
             $transactionsCollection->push($transaction);			
@@ -83,10 +83,10 @@ class TransactionsData extends Data
        } 	
 		
        return new static(
-         links_next_href:$data['_links']['next']['href'],
-	 links_prev_href:$data['_links']['prev']['href'],
-	 securitiesAccountId:$data['securitiesAccountId'],
-         transactions:$transactionsCollection
+         	links_next_href:$data['_links']['next']['href'],
+	 		links_prev_href:$data['_links']['prev']['href'],
+	 		securitiesAccountId:$data['securitiesAccountId'],
+         	transactions:$transactionsCollection
        );				
     }	
 	
