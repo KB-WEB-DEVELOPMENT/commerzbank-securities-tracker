@@ -22,4 +22,3 @@ class ToTradingDate
        return date_format($this->unformattedDate,'Y-m-d'); 
     }
 }
-
