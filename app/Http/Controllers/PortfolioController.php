@@ -62,7 +62,7 @@ class PortfolioController extends Controller
 			['portfolio_id',(int)$portfolio->id],
 		   ])->first();
 		
-	return Inertia::render('Portfolio/Position', [
+	    return Inertia::render('Portfolio/Position', [
             'viewModel' => new GetPortfolioViewModel($user,$securitiesAccountId,$portfolio,$position)
         ]);
     }
